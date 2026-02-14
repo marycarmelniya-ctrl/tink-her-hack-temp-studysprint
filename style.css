@@ -67,7 +67,7 @@ section {
 }
 
 section:hover {
-    transform: translateY(-6px);
+    transform: translateY(-2px);
 }
 
 /* ===== INPUT ===== */
