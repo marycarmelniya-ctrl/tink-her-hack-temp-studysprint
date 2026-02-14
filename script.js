@@ -1,4 +1,6 @@
 // ===== CONNECT ELEMENTS =====
+const customInput = document.getElementById("customMinutes");
+const setCustomBtn = document.getElementById("setCustomTime");
 const timeButtons = document.querySelectorAll(".time-btn");
 const progressFill = document.getElementById("progressFill");
 const taskInput = document.getElementById("taskInput");
@@ -89,6 +91,18 @@ function updateProgress() {
 // ===== TIMER SECTION =====
 let timer;
 let timeLeft = 25 * 60;
+
+setCustomBtn.addEventListener("click", function () {
+    const value = parseInt(customInput.value);
+
+    if (!value || value <= 0) {
+        alert("Enter valid minutes");
+        return;
+    }
+
+    timeLeft = value * 60;
+    updateTimerDisplay();
+});
 
 timeButtons.forEach(button => {
     button.addEventListener("click", function () {
