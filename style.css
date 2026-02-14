@@ -184,4 +184,35 @@ li input[type="checkbox"] {
     transform: scale(1.2);
     accent-color: #667eea;
 }
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   /* ⭐ aligns everything perfectly */
+}
+
+.task-left {
+    display: flex;
+    align-items: center;   /* ⭐ keeps checkbox + text aligned */
+    gap: 12px;
+}
+
+li input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+}
+.time-options {
+    display: flex;
+    justify-content: center;   /* ⭐ keeps them centered */
+    align-items: center;
+    gap: 10px;                 /* equal spacing between buttons */
+    flex-wrap: wrap;
+    margin: 12px 0;
+}
+
+.time-btn {
+    min-width: 90px;           /* ⭐ makes all buttons same size */
+    text-align: center;
+}
+
 
