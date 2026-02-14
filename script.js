@@ -32,7 +32,6 @@ addTaskBtn.addEventListener("click", function () {
     renderTasks();
 });
 
-// ENTER KEY ADD
 taskInput.addEventListener("keypress", function (e) {
     if (e.key === "Enter") addTaskBtn.click();
 });
@@ -45,7 +44,6 @@ function renderTasks() {
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
 
-        // ⭐ LEFT GROUP (FIXES ALIGNMENT)
         const leftGroup = document.createElement("div");
         leftGroup.classList.add("task-left");
 
@@ -65,21 +63,18 @@ function renderTasks() {
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
-
         deleteBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             tasks.splice(index, 1);
             renderTasks();
         });
 
-        // ⭐ IMPORTANT ORDER
         leftGroup.appendChild(checkbox);
         leftGroup.appendChild(text);
 
         li.appendChild(leftGroup);
         li.appendChild(deleteBtn);
 
-        // MOVE COMPLETED TASKS
         if (task.completed) {
             completedList.appendChild(li);
         } else {
@@ -112,19 +107,46 @@ function updateProgress() {
 // ===== TIMER SECTION =====
 let timer;
 let timeLeft = 25 * 60;
-
 let sessions = 0;
+
 function completeSession() {
     sessions++;
     document.getElementById("sessionCount").textContent =
         "Focus Sessions Completed: " + sessions;
 }
 
+// ⭐ REMINDER POPUP
+function showReminder(message) {
+    const popup = document.createElement("div");
+    popup.className = "reminder-popup";
+    popup.textContent = message;
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+// ⭐ BREAK SYSTEM + CHARACTER
+function startBreak() {
+    showReminder("🚶 Take a walk and relax!");
+
+    const character = document.createElement("div");
+    character.id = "breakCharacter";
+    character.textContent = "🧘‍♀️";
+    document.body.appendChild(character);
+
+    setTimeout(() => {
+        character.remove();
+        timeLeft = 25 * 60;
+        updateTimerDisplay();
+    }, 10000);
+}
+
 // CUSTOM TIME
 setCustomBtn.addEventListener("click", function () {
     const value = parseInt(customInput.value);
     if (!value || value <= 0) return alert("Enter valid minutes");
-
     timeLeft = value * 60;
     updateTimerDisplay();
 });
@@ -146,7 +168,7 @@ function updateTimerDisplay() {
         `${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
 }
 
-// START TIMER
+// ⭐ START TIMER (WITH WATER REMINDERS)
 startBtn.addEventListener("click", function () {
     if (timer) return;
 
@@ -154,11 +176,17 @@ startBtn.addEventListener("click", function () {
         if (timeLeft > 0) {
             timeLeft--;
             updateTimerDisplay();
+
+            // 💧 Water reminder every 5 minutes
+            if (timeLeft % 300 === 0) {
+                showReminder("💧 Drink some water!");
+            }
+
         } else {
             clearInterval(timer);
             timer = null;
             completeSession();
-            alert("Study session complete!");
+            startBreak();
         }
     }, 1000);
 });
