@@ -122,3 +122,25 @@ li:hover {
     transition: width 0.3s ease;
 }
 
+.time-options {
+    margin: 10px 0;
+}
+
+.time-btn {
+    margin: 5px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: #eee;
+    font-weight: bold;
+}
+
+.time-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.timer-controls button {
+    margin: 5px;
+}

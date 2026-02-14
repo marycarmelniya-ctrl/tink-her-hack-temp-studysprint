@@ -23,14 +23,26 @@
         <ul id="taskList"></ul>
     </section>
 
-    <!-- TIMER SECTION -->
-    <section>
-        <h2>Study Timer (25 Minutes)</h2>
-        <h2 id="timerDisplay">25:00</h2>
-        <button id="startBtn">Start</button>
-        <button id="pauseBtn">Pause</button>
-        <button id="resetBtn">Reset</button>
-    </section>
+   <!-- TIMER SECTION -->
+<section>
+    <h2>⏳ Study Timer</h2>
+
+    <div class="time-options">
+        <button class="time-btn" data-time="25">25 min</button>
+        <button class="time-btn" data-time="30">30 min</button>
+        <button class="time-btn" data-time="45">45 min</button>
+        <button class="time-btn" data-time="60">60 min</button>
+    </div>
+
+    <h1 id="timerDisplay">25:00</h1>
+
+    <div class="timer-controls">
+        <button id="startBtn">▶ Start</button>
+        <button id="pauseBtn">⏸ Pause</button>
+        <button id="resetBtn">⟳ Reset</button>
+    </div>
+</section>
+
 
     <!-- PROGRESS SECTION -->
     <section>
