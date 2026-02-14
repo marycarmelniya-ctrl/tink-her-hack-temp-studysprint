@@ -1,4 +1,5 @@
 // ===== CONNECT ELEMENTS =====
+const timeButtons = document.querySelectorAll(".time-btn");
 const progressFill = document.getElementById("progressFill");
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
@@ -88,6 +89,13 @@ function updateProgress() {
 // ===== TIMER SECTION =====
 let timer;
 let timeLeft = 25 * 60;
+
+timeButtons.forEach(button => {
+    button.addEventListener("click", function () {
+        timeLeft = this.dataset.time * 60;
+        updateTimerDisplay();
+    });
+});
 
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
