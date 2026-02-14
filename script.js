@@ -4,7 +4,7 @@ const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 const progressText = document.getElementById("progressText");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // ===== ADD TASK =====
 addTaskBtn.addEventListener("click", function () {
@@ -20,6 +20,11 @@ addTaskBtn.addEventListener("click", function () {
     tasks.push(task);
     taskInput.value = "";
     renderTasks();
+});
+taskInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        addTaskBtn.click();
+    }
 });
 
 // ===== RENDER TASKS =====
@@ -57,7 +62,8 @@ function renderTasks() {
         taskList.appendChild(li);
     });
 
-    updateProgress();
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
 }
 
 // ===== UPDATE PROGRESS =====
