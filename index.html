@@ -8,87 +8,91 @@
 
 <body>
 
- <h1 class="art-heading">StudySprint</h1>
-<p class="tagline">Smart Study Session Planner</p>
+    <!-- MAIN HEADING -->
+    <h1 class="art-heading">StudySprint</h1>
+    <p class="tagline">Smart Study Session Planner</p>
 
+    <div class="app-container">
 
-    <!-- ADD TASK SECTION -->
-    <section>
-        <h2>➕ Add Study Task</h2>
-        <div class="add-task-container">
-            <input type="text" id="taskInput" placeholder="Enter study task">
-            <button id="addTaskBtn">Add</button>
-        </div>
-    </section>
+        <!-- ADD TASK SECTION -->
+        <section>
+            <h2>
+                <img src="study.png" class="icon">
+                Add Study Task
+            </h2>
 
-    <!-- TASK DISPLAY SECTION -->
-    <section>
-        <h2>📋 Your Tasks</h2>
+            <div class="add-task-container">
+                <input type="text" id="taskInput" placeholder="Enter study task">
+                <button id="addTaskBtn">Add</button>
+            </div>
+        </section>
 
-        <h3 class="active-heading">🟢 Active Tasks</h3>
-        <ul id="taskList"></ul>
+        <!-- TASK DISPLAY SECTION -->
+        <section>
+            <h2>Your Tasks</h2>
 
-        <h3 class="completed-heading">✅ Completed</h3>
-        <ul id="completedList"></ul>
+            <h3 class="active-heading">Active Tasks</h3>
+            <ul id="taskList"></ul>
 
-        <p id="allDoneMessage"
-           style="display:none; font-weight:bold; color:#28a745; margin-top:10px;">
-            🎉 All Tasks Completed! Great job!
-        </p>
-    </section>
+            <h3 class="completed-heading">Completed</h3>
+            <ul id="completedList"></ul>
 
-    <!-- TIMER SECTION -->
-    <section>
-        <h2>⏳ Study Timer</h2>
+            <p id="allDoneMessage"
+               style="display:none; font-weight:bold; color:#28a745; margin-top:10px;">
+                All Tasks Completed! Great job!
+            </p>
+        </section>
 
-        <h3>📚 Focus Mode</h3>
+        <!-- TIMER SECTION -->
+        <section>
+            <h2>Study Timer</h2>
 
-        <div class="time-options">
-            <button class="time-btn" data-time="25">25 min</button>
-            <button class="time-btn" data-time="30">30 min</button>
-            <button class="time-btn" data-time="60">1 Hour</button>
-        </div>
+            <h3>Focus Mode</h3>
 
-        <div class="custom-time">
-            <input type="number" id="customMinutes" placeholder="Enter minutes" min="1">
-            <button id="setCustomTime">Set</button>
-        </div>
+            <div class="time-options">
+                <button class="time-btn" data-time="25">25 min</button>
+                <button class="time-btn" data-time="30">30 min</button>
+                <button class="time-btn" data-time="60">1 Hour</button>
+            </div>
 
-        <h1 id="timerDisplay">25:00</h1>
-        <p id="motivationText"></p>
+            <div class="custom-time">
+                <input type="number" id="customMinutes" placeholder="Enter minutes" min="1">
+                <button id="setCustomTime">Set</button>
+            </div>
 
-        <div class="timer-controls">
-            <button id="startBtn">▶ Start</button>
-            <button id="pauseBtn">⏸ Pause</button>
-            <button id="resetBtn">⟳ Reset</button>
-            <button id="add5">+5 min</button>
-            <button id="add10">+10 min</button>
-        </div>
-    </section>
+            <h1 id="timerDisplay">25:00</h1>
+            <p id="motivationText"></p>
 
-    <!-- PROGRESS SECTION -->
-    <section>
-        <h2>Progress</h2>
-        <h3 id="progressText">0 / 0 Tasks Completed</h3>
+            <div class="timer-controls">
+                <button id="startBtn">Start</button>
+                <button id="pauseBtn">Pause</button>
+                <button id="resetBtn">Reset</button>
+                <button id="add5">+5 min</button>
+                <button id="add10">+10 min</button>
+            </div>
+        </section>
 
-        <div class="progress-bar">
-            <div id="progressFill"></div>
-        </div>
+        <!-- PROGRESS SECTION -->
+        <section>
+            <h2>Progress</h2>
 
-        <h4 id="sessionCount">Focus Sessions Completed: 0</h4>
-    </section>
+            <h3 id="progressText">0 / 0 Tasks Completed</h3>
 
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+            <h4 id="sessionCount">Focus Sessions Completed: 0</h4>
+        </section>
+
+    </div>
+
+    <!-- DOODLES -->
+    <div class="doodle-circle"></div>
+    <div class="doodle-line"></div>
+
+    <!-- SCRIPT -->
     <script src="script.js"></script>
-   <div class="doodle-circle"></div>
-<div class="doodle-line"></div>
-<div class="doodle doodle-top-left">
-    ✏️
-</div>
-
-<div class="doodle doodle-bottom-right">
-    📚
-</div>
-
 
 </body>
 </html>
