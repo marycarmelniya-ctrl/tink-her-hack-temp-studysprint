@@ -1,4 +1,6 @@
 // ===== CONNECT ELEMENTS =====
+const completedList = document.getElementById("completedList");
+
 const add5Btn = document.getElementById("add5");
 const add10Btn = document.getElementById("add10");
 const customInput = document.getElementById("customMinutes");
@@ -42,15 +44,23 @@ taskInput.addEventListener("keypress", function (e) {
 // ===== RENDER TASKS =====
 function renderTasks() {
     taskList.innerHTML = "";
+    completedList.innerHTML = "";
 
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
-        li.textContent = task.text;
+
+        // ⭐ CHECKBOX
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+
+        const text = document.createElement("span");
+        text.textContent = task.text;
 
         if (task.completed) li.classList.add("completed");
 
-        li.addEventListener("click", function () {
-            tasks[index].completed = !tasks[index].completed;
+        checkbox.addEventListener("change", function () {
+            tasks[index].completed = checkbox.checked;
             renderTasks();
         });
 
@@ -63,13 +73,22 @@ function renderTasks() {
             renderTasks();
         });
 
+        li.appendChild(checkbox);
+        li.appendChild(text);
         li.appendChild(deleteBtn);
-        taskList.appendChild(li);
+
+        // ⭐ MOVE COMPLETED TASKS
+        if (task.completed) {
+            completedList.appendChild(li);
+        } else {
+            taskList.appendChild(li);
+        }
     });
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
     updateProgress();
 }
+
 
 // ===== UPDATE PROGRESS =====
 function updateProgress() {
