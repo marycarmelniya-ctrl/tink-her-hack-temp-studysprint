@@ -1,4 +1,6 @@
 // ===== CONNECT ELEMENTS =====
+const add5Btn = document.getElementById("add5");
+const add10Btn = document.getElementById("add10");
 const customInput = document.getElementById("customMinutes");
 const setCustomBtn = document.getElementById("setCustomTime");
 const timeButtons = document.querySelectorAll(".time-btn");
@@ -7,7 +9,6 @@ const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 const progressText = document.getElementById("progressText");
-
 const timerDisplay = document.getElementById("timerDisplay");
 const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
@@ -143,6 +144,16 @@ resetBtn.addEventListener("click", function () {
     clearInterval(timer);
     timer = null;
     timeLeft = 25 * 60;
+    updateTimerDisplay();
+});
+
+add5Btn.addEventListener("click", function () {
+    timeLeft += 5 * 60;
+    updateTimerDisplay();
+});
+
+add10Btn.addEventListener("click", function () {
+    timeLeft += 10 * 60;
     updateTimerDisplay();
 });
 
