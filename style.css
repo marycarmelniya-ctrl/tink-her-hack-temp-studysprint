@@ -268,3 +268,50 @@ section:nth-of-type(3) {
     margin-right: 10px;
     vertical-align: middle;
 }
+/* ⭐ FINAL ALIGNMENT FIX — CLEAN VERSION */
+
+/* make all cards equal height */
+.app-container{
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* structure each card vertically */
+section{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+
+/* fix Add Task input alignment */
+.add-task-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.add-task-container input{
+    flex:1;
+}
+
+/* keep icon + heading aligned and on one line */
+section h2{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    white-space:nowrap;
+}
+
+/* stop icon shrinking */
+.icon{
+    flex-shrink:0;
+}
+
+/* center timer buttons properly */
+.timer-controls{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
