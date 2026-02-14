@@ -144,3 +144,18 @@ li:hover {
 .timer-controls button {
     margin: 5px;
 }
+.custom-time {
+    margin-top: 10px;
+}
+
+.custom-time input {
+    padding: 6px;
+    width: 120px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.custom-time button {
+    margin-left: 5px;
+}
+

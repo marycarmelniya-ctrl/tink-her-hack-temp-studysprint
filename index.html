@@ -22,17 +22,21 @@
         <h2>Your Tasks</h2>
         <ul id="taskList"></ul>
     </section>
-
-   <!-- TIMER SECTION -->
-<section>
+    <section>
     <h2>⏳ Study Timer</h2>
 
-    <div class="time-options">
-        <button class="time-btn" data-time="25">25 min</button>
-        <button class="time-btn" data-time="30">30 min</button>
-        <button class="time-btn" data-time="45">45 min</button>
-        <button class="time-btn" data-time="60">60 min</button>
-    </div>
+    <h3>📚 Focus Mode</h3>
+<div class="time-options">
+    <button class="time-btn" data-time="25">25 min</button>
+    <button class="time-btn" data-time="30">30 min</button>
+    <button class="time-btn" data-time="60">1 Hour</button>
+</div>
+
+<!-- ⭐ Custom Time -->
+<div class="custom-time">
+    <input type="number" id="customMinutes" placeholder="Enter minutes" min="1">
+    <button id="setCustomTime">Set</button>
+</div>
 
     <h1 id="timerDisplay">25:00</h1>
 
@@ -43,7 +47,7 @@
     </div>
 </section>
 
-
+   
     <!-- PROGRESS SECTION -->
     <section>
         <h2>Progress</h2>
