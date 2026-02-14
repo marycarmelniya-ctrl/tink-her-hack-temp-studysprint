@@ -51,10 +51,11 @@ p {
 .app-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 45px;   /* ⭐ increased space between frames */
     max-width: 1400px;
     margin: auto;
 }
+
 
 /* ===== CARDS ===== */
 section {
@@ -67,8 +68,9 @@ section {
 }
 
 section:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
+
 
 /* ===== INPUT ===== */
 input {
