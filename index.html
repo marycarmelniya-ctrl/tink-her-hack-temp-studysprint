@@ -11,21 +11,29 @@
     <h1>📚 StudySprint</h1>
     <p>Smart Study Session Planner</p>
 
-    <!-- TASK SECTION -->
+    <!-- ADD TASK SECTION -->
     <section>
-    <h2>Your Tasks</h2>
+        <h2>➕ Add Study Task</h2>
+        <div class="add-task-container">
+            <input type="text" id="taskInput" placeholder="Enter study task">
+            <button id="addTaskBtn">Add</button>
+        </div>
+    </section>
 
-    <ul id="taskList"></ul>
-
-    <h3>✅ Completed</h3>
-    <ul id="completedList"></ul>
-</section>
-
-
-    <!-- TASK LIST -->
+    <!-- TASK DISPLAY SECTION -->
     <section>
-        <h2>Your Tasks</h2>
+        <h2>📋 Your Tasks</h2>
+
+        <h3 class="active-heading">🟢 Active Tasks</h3>
         <ul id="taskList"></ul>
+
+        <h3 class="completed-heading">✅ Completed</h3>
+        <ul id="completedList"></ul>
+
+        <p id="allDoneMessage"
+           style="display:none; font-weight:bold; color:#28a745; margin-top:10px;">
+            🎉 All Tasks Completed! Great job!
+        </p>
     </section>
 
     <!-- TIMER SECTION -->
@@ -33,21 +41,19 @@
         <h2>⏳ Study Timer</h2>
 
         <h3>📚 Focus Mode</h3>
+
         <div class="time-options">
             <button class="time-btn" data-time="25">25 min</button>
             <button class="time-btn" data-time="30">30 min</button>
             <button class="time-btn" data-time="60">1 Hour</button>
         </div>
 
-        <!-- Custom Time -->
         <div class="custom-time">
             <input type="number" id="customMinutes" placeholder="Enter minutes" min="1">
             <button id="setCustomTime">Set</button>
         </div>
 
         <h1 id="timerDisplay">25:00</h1>
-
-        <!-- Motivation Text -->
         <p id="motivationText"></p>
 
         <div class="timer-controls">

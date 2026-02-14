@@ -76,18 +76,32 @@ ul {
 li {
     background: #f8f9ff;
     margin: 12px 0;
-    padding: 14px 16px;
+    padding: 14px 18px;
     border-radius: 12px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    transition: 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    gap: 12px;              /* ⭐ adds spacing between checkbox & text */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
 }
 
-li:hover {
-    transform: translateY(-2px);
+/* Text takes full space */
+li span {
+    flex: 1;                /* ⭐ pushes delete button to far right */
+    text-align: left;
+    font-weight: 500;
 }
+li input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 10px;
+    accent-color: #667eea;
+}
+
+
+/* Delete button spacing */
+li button {
+    margin-left: 15px;
+}
+
 
 .completed {
     text-decoration: line-through;
@@ -124,3 +138,50 @@ li:hover {
     border-radius: 10px;
     transition: width 0.3s ease;
 }
+li input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+.add-task-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.add-task-container input {
+    flex: 1;
+}
+
+.active-heading {
+    color: #667eea;
+    margin-top: 15px;
+}
+
+.completed-heading {
+    color: #28a745;
+    margin-top: 20px;
+}
+
+li {
+    background: #f8f9ff;
+    margin: 12px 0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+li input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #667eea;
+}
+
