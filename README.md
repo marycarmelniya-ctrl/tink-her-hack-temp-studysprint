@@ -14,7 +14,7 @@ StudySprint
 - Diya B - Jain University, Kochi
 
 ### Hosted Project Link
-(Add GitHub Pages link here later)
+https://marycarmelniya-ctrl.github.io/tink-her-hack-temp-studysprint/
 
 ### Project Description
 StudySprint is a smart study session planner that helps students organize tasks, track productivity, and use a built-in 25-minute Pomodoro timer for focused study sessions.
