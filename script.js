@@ -1,25 +1,21 @@
 // ===== CONNECT ELEMENTS =====
 const completedList = document.getElementById("completedList");
-
 const add5Btn = document.getElementById("add5");
 const add10Btn = document.getElementById("add10");
 const customInput = document.getElementById("customMinutes");
 const setCustomBtn = document.getElementById("setCustomTime");
 const timeButtons = document.querySelectorAll(".time-btn");
-
 const progressFill = document.getElementById("progressFill");
 const progressText = document.getElementById("progressText");
-
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
-
 const timerDisplay = document.getElementById("timerDisplay");
 const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
 
-// ===== TASK DATA (with localStorage) =====
+// ===== TASK DATA =====
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // ===== ADD TASK =====
@@ -49,7 +45,10 @@ function renderTasks() {
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
 
-        // ⭐ CHECKBOX
+        // ⭐ LEFT GROUP (FIXES ALIGNMENT)
+        const leftGroup = document.createElement("div");
+        leftGroup.classList.add("task-left");
+
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.checked = task.completed;
@@ -73,11 +72,14 @@ function renderTasks() {
             renderTasks();
         });
 
-        li.appendChild(checkbox);
-        li.appendChild(text);
+        // ⭐ IMPORTANT ORDER
+        leftGroup.appendChild(checkbox);
+        leftGroup.appendChild(text);
+
+        li.appendChild(leftGroup);
         li.appendChild(deleteBtn);
 
-        // ⭐ MOVE COMPLETED TASKS
+        // MOVE COMPLETED TASKS
         if (task.completed) {
             completedList.appendChild(li);
         } else {
@@ -89,7 +91,6 @@ function renderTasks() {
     updateProgress();
 }
 
-
 // ===== UPDATE PROGRESS =====
 function updateProgress() {
     const completedTasks = tasks.filter(t => t.completed).length;
@@ -100,15 +101,19 @@ function updateProgress() {
 
     const percent = total === 0 ? 0 : (completedTasks / total) * 100;
     progressFill.style.width = percent + "%";
+
+    const message = document.getElementById("allDoneMessage");
+    if (message) {
+        message.style.display =
+            total > 0 && completedTasks === total ? "block" : "none";
+    }
 }
 
 // ===== TIMER SECTION =====
 let timer;
 let timeLeft = 25 * 60;
 
-// ⭐ SESSION COUNTER
 let sessions = 0;
-
 function completeSession() {
     sessions++;
     document.getElementById("sessionCount").textContent =
@@ -138,9 +143,7 @@ function updateTimerDisplay() {
     const seconds = timeLeft % 60;
 
     timerDisplay.textContent =
-        `${minutes.toString().padStart(2, "0")}:${seconds
-            .toString()
-            .padStart(2, "0")}`;
+        `${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
 }
 
 // START TIMER
@@ -154,9 +157,7 @@ startBtn.addEventListener("click", function () {
         } else {
             clearInterval(timer);
             timer = null;
-
-            completeSession(); // ⭐ FIXED SESSION COUNTER
-
+            completeSession();
             alert("Study session complete!");
         }
     }, 1000);
