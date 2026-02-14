@@ -7,7 +7,6 @@ body {
     color: #333;
 }
 
-/* Title & Subtitle */
 h1 {
     color: white;
     margin-top: 30px;
@@ -17,10 +16,8 @@ h1 {
 p {
     color: white;
     margin-bottom: 30px;
-    font-size: 16px;
 }
 
-/* Card Sections */
 section {
     background: white;
     width: 450px;
@@ -29,10 +26,8 @@ section {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    transition: 0.3s;
 }
 
-/* Input Field */
 input {
     padding: 10px;
     width: 70%;
@@ -46,52 +41,59 @@ input:focus {
     box-shadow: 0 0 5px rgba(102,126,234,0.5);
 }
 
-/* Buttons */
+/* ===== PREMIUM BUTTONS ===== */
 button {
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 10px 16px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
-    background-color: #667eea;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    font-weight: bold;
-    transition: 0.2s;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(102,126,234,0.3);
 }
 
 button:hover {
-    background-color: #5563c1;
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102,126,234,0.4);
 }
 
-/* Task List */
+button:active {
+    transform: scale(0.97);
+}
+
+.timer-controls button {
+    margin: 6px;
+    min-width: 95px;
+}
+
 ul {
     list-style: none;
     padding: 0;
 }
 
 li {
-    background: #f4f4f4;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 6px;
+    background: #f8f9ff;
+    margin: 12px 0;
+    padding: 14px 16px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 0.2s;
+    transition: 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 li:hover {
-    transform: scale(1.02);
-    background: #e9ecff;
+    transform: translateY(-2px);
 }
 
-/* Completed Tasks */
 .completed {
     text-decoration: line-through;
     opacity: 0.6;
 }
 
-/* Timer */
 #timerDisplay {
     font-size: 52px;
     font-weight: bold;
@@ -99,10 +101,11 @@ li:hover {
     color: #667eea;
 }
 
-/* Progress Text */
-#progressText {
-    font-weight: bold;
-    font-size: 16px;
+#motivationText {
+    font-size: 18px;
+    font-weight: 600;
+    color: #667eea;
+    margin-top: 10px;
 }
 
 .progress-bar {
@@ -121,45 +124,3 @@ li:hover {
     border-radius: 10px;
     transition: width 0.3s ease;
 }
-
-.time-options {
-    margin: 10px 0;
-}
-
-.time-btn {
-    margin: 5px;
-    padding: 8px 14px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    background: #eee;
-    font-weight: bold;
-}
-
-.time-btn:hover {
-    background: #667eea;
-    color: white;
-}
-
-.timer-controls button {
-    margin: 5px;
-}
-.custom-time {
-    margin-top: 10px;
-}
-
-.custom-time input {
-    padding: 6px;
-    width: 120px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-.custom-time button {
-    margin-left: 5px;
-}
-.time-btn.active {
-    background: #667eea;
-    color: white;
-}
-
