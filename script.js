@@ -1,15 +1,21 @@
-// ===== TASK VARIABLES =====
+// ===== CONNECT ELEMENTS =====
+const progressFill = document.getElementById("progressFill");
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 const progressText = document.getElementById("progressText");
 
+const timerDisplay = document.getElementById("timerDisplay");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+// ===== TASK DATA (with localStorage) =====
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // ===== ADD TASK =====
 addTaskBtn.addEventListener("click", function () {
     const taskValue = taskInput.value.trim();
-
     if (taskValue === "") return;
 
     const task = {
@@ -21,7 +27,9 @@ addTaskBtn.addEventListener("click", function () {
     taskInput.value = "";
     renderTasks();
 });
-taskInput.addEventListener("keypress", function(e) {
+
+// ENTER KEY ADD
+taskInput.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
         addTaskBtn.click();
     }
@@ -33,21 +41,20 @@ function renderTasks() {
 
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
-
         li.textContent = task.text;
         li.style.cursor = "pointer";
 
-        // Mark complete
         if (task.completed) {
             li.style.textDecoration = "line-through";
         }
 
+        // COMPLETE TOGGLE
         li.addEventListener("click", function () {
             tasks[index].completed = !tasks[index].completed;
             renderTasks();
         });
 
-        // Delete button
+        // DELETE BUTTON
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         deleteBtn.style.marginLeft = "10px";
@@ -63,24 +70,24 @@ function renderTasks() {
     });
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
-
+    updateProgress(); // ⭐ important
 }
 
 // ===== UPDATE PROGRESS =====
 function updateProgress() {
     const completedTasks = tasks.filter(task => task.completed).length;
-    progressText.textContent = `${completedTasks} / ${tasks.length} Tasks Completed`;
+    const total = tasks.length;
+
+    progressText.textContent =
+        `${completedTasks} / ${total} Tasks Completed`;
+
+    // ⭐ THIS PART CONTROLS VISUAL BAR
+    const percent = total === 0 ? 0 : (completedTasks / total) * 100;
+    progressFill.style.width = percent + "%";
 }
-
-
 // ===== TIMER SECTION =====
-const timerDisplay = document.getElementById("timerDisplay");
-const startBtn = document.getElementById("startBtn");
-const pauseBtn = document.getElementById("pauseBtn");
-const resetBtn = document.getElementById("resetBtn");
-
 let timer;
-let timeLeft = 25 * 60; // 25 minutes in seconds
+let timeLeft = 25 * 60;
 
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -117,4 +124,6 @@ resetBtn.addEventListener("click", function () {
     updateTimerDisplay();
 });
 
+// ===== INITIAL LOAD =====
 updateTimerDisplay();
+renderTasks();
