@@ -7,6 +7,8 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+
+/* Background blobs */
 body::before {
     content: "";
     position: fixed;
@@ -15,7 +17,7 @@ body::before {
     width: 350px;
     height: 350px;
     background: radial-gradient(circle, #818cf8 30%, transparent 70%);
-    opacity: 0.55;   /* darker */
+    opacity: 0.55;
     z-index: -1;
 }
 
@@ -27,13 +29,11 @@ body::after {
     width: 350px;
     height: 350px;
     background: radial-gradient(circle, #f472b6 30%, transparent 70%);
-    opacity: 0.45;   /* slightly darker */
+    opacity: 0.45;
     z-index: -1;
 }
 
-
-
-/* ===== HEADINGS ===== */
+/* ===== MAIN HEADING ===== */
 h1 {
     font-size: 48px;
     margin-bottom: 5px;
@@ -47,30 +47,56 @@ p {
     margin-bottom: 40px;
 }
 
-/* ===== DESKTOP GRID ===== */
+/* ===== GRID LAYOUT ===== */
 .app-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 45px;   /* ⭐ increased space between frames */
-    max-width: 1400px;
-    margin: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 60px auto;
 }
 
-
-/* ===== CARDS ===== */
+/* ===== WHITE CARD BOXES ===== */
 section {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
+    background: white;
     border-radius: 25px;
-    padding: 25px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    padding: 30px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     transition: 0.3s ease;
 }
 
 section:hover {
-    transform: translateY(-1px);
+    transform: translateY(-3px);
 }
 
+/* ===== HEADINGS ===== */
+section h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* ===== ICON ===== */
+.icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+/* ===== ADD TASK ALIGNMENT ===== */
+.add-task-container {
+    display: flex;
+    flex-direction: column;   /* ⭐ stack vertically */
+    align-items: stretch;     /* make button same width */
+    gap: 12px;
+    margin-top: 15px;
+}
 
 /* ===== INPUT ===== */
 input {
@@ -135,7 +161,11 @@ li input[type="checkbox"] {
     opacity: 0.5;
 }
 
-/* ===== TIMER ===== */
+/* ===== TIMER SECTION ===== */
+section:nth-of-type(3) {
+    text-align: center;
+}
+
 #timerDisplay {
     font-size: 52px;
     font-weight: bold;
@@ -149,25 +179,38 @@ li input[type="checkbox"] {
     color: #6366f1;
 }
 
-/* ===== TIME BUTTONS ===== */
-.time-options {
+/* ===== TIMER BUTTONS ===== */
+.time-options,
+.timer-controls {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 12px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .time-btn {
     min-width: 90px;
 }
 
-/* ===== PROGRESS BAR ===== */
+.custom-time {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* ===== PROGRESS SECTION ===== */
+section:nth-of-type(4) {
+    text-align: center;
+}
+
 .progress-bar {
     width: 100%;
     height: 12px;
     background: #e5e7eb;
     border-radius: 10px;
-    margin-top: 10px;
+    margin: 15px 0;
     overflow: hidden;
 }
 
@@ -189,129 +232,4 @@ li input[type="checkbox"] {
     .app-container {
         grid-template-columns: 1fr;
     }
-}
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 48px;
-    font-weight: 700;
-    background: linear-gradient(90deg, #6366f1, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.logo-icon {
-    font-size: 42px;
-    background: linear-gradient(135deg, #6366f1, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-@keyframes float {
-    0% { transform: translateY(0px) rotate(25deg); }
-    50% { transform: translateY(-10px) rotate(25deg); }
-    100% { transform: translateY(0px) rotate(25deg); }
-}
-
-.doodle-line {
-    animation: float 6s ease-in-out infinite;
-}
-/* Center entire timer section content */
-section:nth-of-type(3) {
-    text-align: center;
-}
-
-/* Center custom time input + set button */
-.custom-time {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-/* Center timer control buttons */
-.timer-controls {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-}
-.reminder-popup {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg,#6366f1,#ec4899);
-    color: white;
-    padding: 12px 18px;
-    border-radius: 12px;
-    font-weight: 600;
-    z-index: 999;
-}
-
-#breakCharacter {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    font-size: 80px;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
-}
-.icon {
-    width: 22px;
-    height: 22px;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-/* ⭐ FINAL ALIGNMENT FIX — CLEAN VERSION */
-
-/* make all cards equal height */
-.app-container{
-    align-items: stretch;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-/* structure each card vertically */
-section{
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-}
-
-/* fix Add Task input alignment */
-.add-task-container{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.add-task-container input{
-    flex:1;
-}
-
-/* keep icon + heading aligned and on one line */
-section h2{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    white-space:nowrap;
-}
-
-/* stop icon shrinking */
-.icon{
-    flex-shrink:0;
-}
-
-/* center timer buttons properly */
-.timer-controls{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:12px;
 }

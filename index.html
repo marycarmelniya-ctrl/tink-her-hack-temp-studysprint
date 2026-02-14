@@ -9,14 +9,18 @@
 <body>
 
     <!-- MAIN HEADING -->
-    <h1 class="art-heading">StudySprint</h1>
-    <p class="tagline">Smart Study Session Planner</p>
+    <div class="main-header">
+        <h1>StudySprint</h1>
+        <p>Smart Study Session Planner</p>
+    </div>
 
+    <!-- APP GRID -->
     <div class="app-container">
 
         <!-- ADD TASK SECTION -->
         <section>
             <h2>
+                <img src="study.png" class="icon" alt="Add">
                 Add Study Task
             </h2>
 
@@ -36,8 +40,7 @@
             <h3 class="completed-heading">Completed</h3>
             <ul id="completedList"></ul>
 
-            <p id="allDoneMessage"
-               style="display:none; font-weight:bold; color:#28a745; margin-top:10px;">
+            <p id="allDoneMessage" class="done-message">
                 All Tasks Completed! Great job!
             </p>
         </section>
@@ -85,10 +88,6 @@
         </section>
 
     </div>
-
-    <!-- DOODLES -->
-    <div class="doodle-circle"></div>
-    <div class="doodle-line"></div>
 
     <!-- SCRIPT -->
     <script src="script.js"></script>
