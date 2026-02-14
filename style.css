@@ -158,4 +158,8 @@ li:hover {
 .custom-time button {
     margin-left: 5px;
 }
+.time-btn.active {
+    background: #667eea;
+    color: white;
+}
 
